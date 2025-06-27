@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProductiveMind - Your Personal Productivity Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- SVG Gradient Definitions -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="glassMorphism" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" />
+            </linearGradient>
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge> 
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Animated Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-circle floating-circle-1"></div>
+        <div class="floating-circle floating-circle-2"></div>
+        <div class="floating-circle floating-circle-3"></div>
+        <div class="floating-triangle floating-triangle-1"></div>
+        <div class="floating-triangle floating-triangle-2"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="brand">
+                    <h1 class="brand-title">ProductiveMind</h1>
+                    <span class="brand-subtitle">Your Personal Productivity Hub</span>
+                </div>
+                <div class="header-actions">
+                    <button id="aboutBtn" class="btn-text">About</button>
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quote of the Day -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-card">
+                <div class="quote-glow"></div>
+                <blockquote id="dailyQuote" class="quote-text">
+                    "The way to get started is to quit talking and begin doing."
+                </blockquote>
+                <cite id="quoteAuthor" class="quote-author">- Walt Disney</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dashboard -->
+    <main class="main-content">
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- Left Column -->
+                <div class="dashboard-left">
+                    <!-- Pomodoro Timer -->
+                    <div class="widget pomodoro-widget glass-morphism" data-widget="pomodoro">
+                        <div class="widget-glow"></div>
+                        <div class="widget-header">
+                            <h3 class="widget-title">🍅 Pomodoro Timer</h3>
+                            <button id="pomodoroSettings" class="btn-icon">⚙️</button>
+                        </div>
+                        <div class="pomodoro-content">
+                            <div class="timer-display">
+                                <div class="timer-circle">
+                                    <div class="timer-ring-glow"></div>
+                                    <svg class="timer-progress" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="45" class="timer-bg"></circle>
+                                        <circle id="timerProgress" cx="50" cy="50" r="45" class="timer-fill"></circle>
+                                    </svg>
+                                    <div class="timer-text">
+                                        <span id="timerDisplay">25:00</span>
+                                        <span id="timerMode">Focus Time</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timer-controls">
+                                <button id="startBtn" class="btn-primary shimmer">Start</button>
+                                <button id="pauseBtn" class="btn-secondary" style="display: none;">Pause</button>
+                                <button id="resetBtn" class="btn-secondary">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Todo List -->
+                    <div class="widget todo-widget glass-morphism" data-widget="todo">
+                        <div class="widget-glow"></div>
+                        <div class="widget-header">
+                            <h3 class="widget-title">✅ Tasks</h3>
+                            <span id="taskCounter" class="task-counter">0 tasks</span>
+                        </div>
+                        <div class="todo-content">
+                            <div class="add-task">
+                                <input type="text" id="newTask" placeholder="Add a new task..." class="task-input glass-input">
+                                <button id="addTaskBtn" class="btn-add pulse-glow">+</button>
+                            </div>
+                            <ul id="taskList" class="task-list"></ul>
+                        </div>
+                    </div>
+
+                    <!-- Flashcard System -->
+                    <div class="widget flashcard-widget glass-morphism" data-widget="flashcard">
+                        <div class="widget-glow"></div>
+                        <div class="widget-header">
+                            <h3 class="widget-title">📚 Flashcards</h3>
+                            <button id="addFlashcardBtn" class="btn-text">+ Add Card</button>
+                        </div>
+                        <div class="flashcard-content">
+                            <div id="flashcardContainer" class="flashcard-container">
+                                <div class="flashcard-placeholder">
+                                    <p>No flashcards yet. Add your first card!</p>
+                                </div>
+                            </div>
+                            <div id="flashcardControls" class="flashcard-controls" style="display: none;">
+                                <button id="prevCard" class="btn-secondary">Previous</button>
+                                <span id="cardCounter" class="card-counter">1 / 1</span>
+                                <button id="nextCard" class="btn-secondary">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="dashboard-right">
+                    <!-- Daily Goals -->
+                    <div class="widget goals-widget glass-morphism" data-widget="goals">
+                        <div class="widget-glow"></div>
+                        <div class="widget-header">
+                            <h3 class="widget-title">🎯 Daily Goals</h3>
+                            <span id="goalProgress" class="goal-progress">0%</span>
+                        </div>
+                        <div class="goals-content">
+                            <div class="add-goal">
+                                <input type="text" id="newGoal" placeholder="Add a daily goal..." class="goal-input glass-input">
+                                <button id="addGoalBtn" class="btn-add pulse-glow">+</button>
+                            </div>
+                            <ul id="goalList" class="goal-list"></ul>
+                        </div>
+                    </div>
+
+                    <!-- Ambient Sounds -->
+                    <div class="widget sounds-widget glass-morphism" data-widget="sounds">
+                        <div class="widget-glow"></div>
+                        <div class="widget-header">
+                            <h3 class="widget-title">🎵 Ambient Sounds</h3>
+                            <span id="soundStatus" class="sound-status">Off</span>
+                        </div>
+                        <div class="sounds-content">
+                            <div class="sound-options">
+                                <button class="sound-btn glass-btn" data-sound="rain">🌧️ Rain</button>
+                                <button class="sound-btn glass-btn" data-sound="cafe">☕ Cafe</button>
+                                <button class="sound-btn glass-btn" data-sound="lofi">🎵 Lo-Fi</button>
+                                <button class="sound-btn glass-btn" data-sound="nature">🌿 Nature</button>
+                            </div>
+                            <div class="volume-control">
+                                <label for="volumeSlider">Volume</label>
+                                <input type="range" id="volumeSlider" min="0" max="100" value="50" class="volume-slider">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rest of the modals remain the same -->
+    <!-- Modals -->
+    <!-- Onboarding Modal -->
+    <div id="onboardingModal" class="modal">
+        <div class="modal-content glass-morphism">
+            <div class="modal-glow"></div>
+            <h2>Welcome to ProductiveMind! 🎉</h2>
+            <p>Your personal productivity hub designed for students and young professionals.</p>
+            <div class="onboarding-features">
+                <div class="feature">
+                    <span class="feature-icon">🍅</span>
+                    <span>Pomodoro Timer for focused work sessions</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">✅</span>
+                    <span>Task management to stay organized</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📚</span>
+                    <span>Flashcards for effective learning</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🎯</span>
+                    <span>Daily goals to track progress</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🎵</span>
+                    <span>Ambient sounds for better focus</span>
+                </div>
+            </div>
+            <button id="closeOnboarding" class="btn-primary shimmer">Get Started</button>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content glass-morphism">
+            <div class="modal-glow"></div>
+            <div class="modal-header">
+                <h2>About ProductiveMind</h2>
+                <button class="modal-close" id="closeAbout">&times;</button>
+            </div>
+            <div class="about-content">
+                <p>ProductiveMind is a comprehensive productivity dashboard designed specifically for students and young professionals who want to maximize their potential.</p>
+                
+                <h3>Features</h3>
+                <ul>
+                    <li><strong>Pomodoro Timer:</strong> Boost focus with timed work sessions</li>
+                    <li><strong>Task Management:</strong> Organize and track your to-dos</li>
+                    <li><strong>Flashcard System:</strong> Enhance learning and memory retention</li>
+                    <li><strong>Daily Goals:</strong> Set and achieve meaningful objectives</li>
+                    <li><strong>Ambient Sounds:</strong> Create the perfect work environment</li>
+                    <li><strong>Daily Motivation:</strong> Start each day with inspiring quotes</li>
+                </ul>
+
+                <h3>Tips for Success</h3>
+                <ul>
+                    <li>Use the Pomodoro technique: 25 minutes focused work, 5-minute breaks</li>
+                    <li>Break large tasks into smaller, manageable chunks</li>
+                    <li>Review and update your goals daily</li>
+                    <li>Create flashcards for key concepts you're learning</li>
+                    <li>Find your ideal ambient sound for concentration</li>
+                </ul>
+
+                <p class="version-info">Built with ❤️ for productivity enthusiasts</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pomodoro Settings Modal -->
+    <div id="pomodoroSettingsModal" class="modal">
+        <div class="modal-content glass-morphism">
+            <div class="modal-glow"></div>
+            <div class="modal-header">
+                <h3>Pomodoro Settings</h3>
+                <button class="modal-close" id="closePomodoroSettings">&times;</button>
+            </div>
+            <div class="settings-content">
+                <div class="setting-group">
+                    <label for="workTime">Work Time (minutes)</label>
+                    <input type="number" id="workTime" min="1" max="60" value="25" class="setting-input glass-input">
+                </div>
+                <div class="setting-group">
+                    <label for="shortBreak">Short Break (minutes)</label>
+                    <input type="number" id="shortBreak" min="1" max="30" value="5" class="setting-input glass-input">
+                </div>
+                <div class="setting-group">
+                    <label for="longBreak">Long Break (minutes)</label>
+                    <input type="number" id="longBreak" min="1" max="60" value="15" class="setting-input glass-input">
+                </div>
+                <div class="setting-group">
+                    <label for="sessionsUntilLongBreak">Sessions until Long Break</label>
+                    <input type="number" id="sessionsUntilLongBreak" min="2" max="10" value="4" class="setting-input glass-input">
+                </div>
+                <button id="savePomodoroSettings" class="btn-primary shimmer">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flashcard Modal -->
+    <div id="flashcardModal" class="modal">
+        <div class="modal-content glass-morphism">
+            <div class="modal-glow"></div>
+            <div class="modal-header">
+                <h3>Add Flashcard</h3>
+                <button class="modal-close" id="closeFlashcard">&times;</button>
+            </div>
+            <div class="flashcard-form">
+                <div class="form-group">
+                    <label for="cardFront">Front (Question)</label>
+                    <textarea id="cardFront" placeholder="Enter the question or term..." class="form-textarea glass-input"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="cardBack">Back (Answer)</label>
+                    <textarea id="cardBack" placeholder="Enter the answer or definition..." class="form-textarea glass-input"></textarea>
+                </div>
+                <button id="saveFlashcard" class="btn-primary shimmer">Add Flashcard</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
