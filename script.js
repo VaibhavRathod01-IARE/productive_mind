@@ -1,6 +1,6 @@
 // Global state management
 const state = {
-    theme: localStorage.getItem('theme') || 'light',
+    theme: localStorage.getItem('theme') || 'dark',
     pomodoro: {
         timeLeft: 25 * 60,
         isActive: false,
