@@ -40,10 +40,10 @@ const quotes = [
 
 // Sound URLs (using placeholder sounds - in real implementation, these would be actual audio files)
 const soundUrls = {
-    rain: 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt5oJCDSF+ye3qiT0MHm7C7+OLTQ4jev...',
-    cafe: 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt5oJCDSF+ye3qiT0MHm7C7+OLTQ4jev...',
-    lofi: 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt5oJCDSF+ye3qiT0MHm7C7+OLTQ4jev...',
-    nature: 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt5oJCDSF+ye3qiT0MHm7C7+OLTQ4jev...'
+    rain: 'rain.mp3',
+    cafe: 'cafe.mp3',
+    lofi: 'lofi.mp3',
+    nature: 'nature.mp3'
 };
 
 // Initialize the application
