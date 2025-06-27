@@ -40,10 +40,10 @@ const quotes = [
 
 // Sound URLs (using placeholder sounds - in real implementation, these would be actual audio files)
 const soundUrls = {
-    rain: 'rain.mp3',
-    cafe: 'cafe.mp3',
-    lofi: 'lofi.mp3',
-    nature: 'nature.mp3'
+    rain: 'https://udaisaikiran01.github.io/productive-mind/rain.mp3',
+    cafe: 'https://udaisaikiran01.github.io/productive-mind/cafe.mp3',
+    lofi: 'https://udaisaikiran01.github.io/productive-mind/lofi.mp3',
+    nature: 'https://udaisaikiran01.github.io/productive-mind/nature.mp3'
 };
 
 // Initialize the application
