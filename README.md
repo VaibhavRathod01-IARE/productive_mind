@@ -2,7 +2,7 @@
 
 **ProductiveMind** is a beautifully designed personal productivity dashboard for students and professionals. It includes features like a Pomodoro Timer, Task Manager, Flashcards, Daily Goals, and Ambient Sounds — all in one place.
 
-Live demo: [GitHub Pages](https://udaisaikiran01.github.io/productivemind)
+Live demo: [GitHub Pages](https://udaisaikiran01.github.io/productive-mind)
 
 ---
 
